@@ -1,2 +1,2 @@
 # Private
- Anonyme service to talk
+An Anonyme service to talk with people, no censure, no tracking.
