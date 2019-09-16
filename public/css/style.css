@@ -1,0 +1,42 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.title-page{
+    width: 100%;
+    text-align: center;
+    position: absolute; 
+    top: 30vh; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ecf0f1;
+}   
+
+.citation-page{
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    top: 40vh;
+}
+
+.btn-start{
+    position: absolute;
+    left: 50%;
+    bottom: 5vh;
+    transform: translate(-50%, -50%);
+}
+
+.main-page{
+    margin: 0;
+    background-color: #3498db;
+}
+
+.second-page{
+    margin: 0;
+    background-color: #2980b9;
+}
+
+label{
+    color: white;
+}
