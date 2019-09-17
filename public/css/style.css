@@ -1,42 +1,48 @@
-html, body{
+html,
+body {
     margin: 0;
     padding: 0;
 }
 
-.title-page{
+.title-page {
     width: 100%;
     text-align: center;
-    position: absolute; 
-    top: 30vh; 
+    position: absolute;
+    top: 30vh;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ecf0f1;
-}   
+}
 
-.citation-page{
+.citation-page {
     padding: 20px;
     text-align: center;
     position: relative;
     top: 40vh;
 }
 
-.btn-start{
+.btn-start {
     position: absolute;
     left: 50%;
     bottom: 5vh;
     transform: translate(-50%, -50%);
 }
 
-.main-page{
+.main-page {
     margin: 0;
     background-color: #3498db;
 }
 
-.second-page{
+.post-page {
     margin: 0;
-    background-color: #2980b9;
+    background-color: #2979ff;
 }
 
-label{
+.list-topic {
+    background-color: #5393ff;
+    padding: 2vh;
+}
+
+label {
     color: white;
 }
