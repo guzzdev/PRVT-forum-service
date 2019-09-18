@@ -2,6 +2,8 @@ html,
 body {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
 }
 
 .title-page {
@@ -24,13 +26,13 @@ body {
 .btn-start {
     position: absolute;
     left: 50%;
-    bottom: 5vh;
+    bottom: 10vh;
     transform: translate(-50%, -50%);
 }
 
 .main-page {
     margin: 0;
-    background-color: #3498db;
+    background-color: #3498db !important;
 }
 
 .post-page {
@@ -45,4 +47,16 @@ body {
 
 label {
     color: white;
+}
+
+#rules-section, #sign-in-section, #choose-section, #sign-up-section{
+    display: none;
+}
+
+
+#choose-section, #sign-up-section, #sign-in-section, #rules-section{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
