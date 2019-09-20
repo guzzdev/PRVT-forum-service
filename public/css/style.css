@@ -41,7 +41,7 @@ body {
 }
 
 .list-topic {
-    background-color: lightskyblue;
+    background-color: #fff;
     padding: 2vh;
 }
 
@@ -59,4 +59,14 @@ label {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+a, a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.lead{
+    line-height: 1.5em;
+    font-size: 1em;
 }
