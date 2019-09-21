@@ -10,5 +10,4 @@ else{
     }
     $reqListTopics = $topicManager->getTopics();
     require('view/topicsList.php');
-
 }

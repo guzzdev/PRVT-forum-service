@@ -4,7 +4,11 @@ class TopicManager
 {
     private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=private_message;charset=utf8', 'root', '');
+        try{    
+            $db = new PDO('mysql:host=localhost;dbname=private_message;charset=utf8', 'root', '');
+        } catch(Exception $e){
+            return $e->getMessage();
+        }
         return $db;
     }
 
@@ -37,12 +41,11 @@ class TopicManager
         $end = $x*10;
         $start = $x*10-10;
         $db = $this->dbConnect();
-        $getTopicsSQL = "SELECT * FROM `topic` ORDER BY last_edit DESC LIMIT ". $start.",".$end;
+        $getTopicsSQL = "SELECT * FROM `topic` ORDER BY last_edit DESC LIMIT 0, 10";
         $reqListTopics = $db->prepare($getTopicsSQL);
         $reqListTopics->execute(array(
-            'istart' => $start,
-            'iend' => $end));
-    
+            'slim' => $start,
+            'elim' => $end));
         return $reqListTopics;
     }
 }
