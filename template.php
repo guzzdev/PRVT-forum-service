@@ -13,7 +13,7 @@
     <?php require_once('public/included_files/header.php');?>
     <?= $content ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script src="public/js/main.js"></script>
 </body>
 
 </html>

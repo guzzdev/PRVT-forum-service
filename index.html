@@ -79,11 +79,17 @@
         <button class="btn btn-lg btn-outline-primary d-block mx-auto m-5" onclick="showChoose()">Understood</button>
     </section>
 
-    <section class="choose container h-100 w-50" id="choose-section">
-        <button class="mt-5 w-100 signin-button btn btn-lg btn-outline-secondary" onclick="showSignin()">Sign
-            in</button>
-        <button class="mt-5 w-100 text-center signup-button btn btn-lg btn-outline-primary" onclick="showSignup()">Sign
-            up</button>
+    <section class="choose container-fluid h-100" id="choose-section">
+        <div class="h-50 bg-secondary" onclick="showSignin()">
+          <h6 class="display-4 text-center text-white choose-buttons">
+            Sign in
+          </h6>
+          </div>
+        <div class="h-50 bg-primary" onclick="showSignup()">
+          <h6 class="display-4 text-center text-white choose-buttons">
+            Sign up
+          </h6>
+          </div>
     </section>
 
     <section class="sign-in container h-75" id="sign-in-section">
