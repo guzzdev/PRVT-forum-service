@@ -1,4 +1,8 @@
 <?php
+require_once('model/ConnectionManager.php');
+$forceConnection = new ConnectionManager();
+$forceConnection->force_connect_user();
+
 require('model/TopicManager.php');
 
 if(isset($_GET['topic']) AND !empty($_GET['topic'])){

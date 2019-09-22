@@ -53,11 +53,20 @@ label {
     display: none;
 }
 
-#choose-section, #sign-up-section, #sign-in-section, #rules-section{
+#sign-up-section, #sign-in-section, #rules-section{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.choose div{
+  cursor: crosshair;
+}
+
+.choose div h6{
+  position: relative;
+  top: 40%;
 }
 
 a, a:hover{

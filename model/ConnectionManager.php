@@ -18,17 +18,33 @@ class ConnectionManager
       return $checkUser->fetch();
     }
 
-    public function signUp($userName, $password)
+    public function isPasswordGood($password, $passwordCheck){
+      $validPass = preg_match("/^[a-z\d_]{8,20}$/i", $password);
+      if ($validPass) {
+        if($passwordCheck == $password){
+          return true;
+        }
+        else {
+          echo "Password are not the same";
+          return false;
+        }
+      }
+      else{
+        echo "Password uses forbidden caracters";
+        return false;
+      }
+    }
+
+    public function signUp($userName, $password, $passwordVerify)
     {
         $lowerUserName = strtolower($userName);
         $validUsername = preg_match("/^[a-z\d_]{4,20}$/i", $lowerUserName);
+        $validPass = $this->isPasswordGood($password, $passwordVerify);
+        if ($validPass == true) {
         try {
           if ($validUsername==true) {
             $exist = $this->isUsernameUsed($lowerUserName);
             if (!$exist) {
-              echo "<br>Your username is ok.\t\t";
-              echo "<br>";
-              echo $password;
               $passwordHash = password_hash($password, PASSWORD_DEFAULT);
               $publicId = uniqid(uniqid(substr($userName, 0,3)."-"));
               $db = $this->dbConnect();
@@ -38,6 +54,7 @@ class ConnectionManager
               $signup->bindParam(':username', $userName, PDO::PARAM_STR);
               $signup->bindParam(':password', $passwordHash, PDO::PARAM_STR);
               $signup->execute();
+              logIn($userName, $password);
             }
             else {
               throw new \Exception("Username is already used", 2);
@@ -48,6 +65,7 @@ class ConnectionManager
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+      }
     }
 
     public function logIn($username, $password){
@@ -61,9 +79,11 @@ class ConnectionManager
               $_SESSION['connected'] = 1;
               header('Location: topic.php');
           }
+          else{
+            throw new \Exception("Mot de passe incorrect", 1);
+          }
         return $isPasswordCorrect;
     }
-
 
     public function getUser($username){
           $db = $this->dbConnect();
@@ -81,8 +101,8 @@ class ConnectionManager
     }
 
     public function force_connect_user(): void {
-        if(!is_connect()){
-            header('Location: login.php');
+        if(!$this->is_connected()){
+            header('Location: text.php');
             exit;
         }
     }
