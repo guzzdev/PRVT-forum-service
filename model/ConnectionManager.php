@@ -54,7 +54,7 @@ class ConnectionManager
               $signup->bindParam(':username', $userName, PDO::PARAM_STR);
               $signup->bindParam(':password', $passwordHash, PDO::PARAM_STR);
               $signup->execute();
-              logIn($userName, $password);
+              $this->logIn($userName, $password);
             }
             else {
               throw new \Exception("Username is already used", 2);
@@ -69,20 +69,27 @@ class ConnectionManager
     }
 
     public function logIn($username, $password){
+      try {
           $db = $this->dbConnect();
-          $pass_exist = $db->prepare('SELECT password FROM users WHERE username = :username');
+          $pass_exist = $db->prepare('SELECT * FROM users WHERE username = :username');
           $pass_exist->bindParam(':username', $username, PDO::PARAM_STR);
           $pass_exist->execute();
           $result = $pass_exist->fetch();
           $isPasswordCorrect = password_verify($password, $result['password']); // send a bool
           if($isPasswordCorrect){
               $_SESSION['connected'] = 1;
+              $_SESSION['username'] = $username;
+              $_SESSION['public_id'] = $result['public_id'];
+
               header('Location: topic.php');
           }
           else{
             throw new \Exception("Mot de passe incorrect", 1);
           }
-        return $isPasswordCorrect;
+          return $isPasswordCorrect;
+        } catch(Exception $e){
+          echo $e->getMessage();
+        }
     }
 
     public function getUser($username){
@@ -100,9 +107,10 @@ class ConnectionManager
         return !empty($_SESSION['connected']);
     }
 
+
     public function force_connect_user(): void {
         if(!$this->is_connected()){
-            header('Location: text.php');
+            header('Location: login.php');
             exit;
         }
     }

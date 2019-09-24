@@ -1,4 +1,4 @@
-<?php 
+<?php
 $title = "Topics List";
 ob_start(); ?>
 <section class="list-topic container-fluid">
@@ -11,13 +11,15 @@ ob_start(); ?>
         <a href="topic.php?topic=<?php echo htmlspecialchars($dataListTopics['public_id']);?>">
             <div class="card mt-3">
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo htmlspecialchars($dataListTopics['title']);?></h5>
+                    <h5 class="card-title"><?= htmlspecialchars($dataListTopics['title']). ":". $dataListTopics['id']; ?></h5>
                     <p class="card-text"><?php echo htmlspecialchars(substr($dataListTopics['text'], 0, 250));?>...
                     </p>
                     <p class="card-text">
                         <small class="text-muted"> <?php echo date_format($topicsDate, 'd F Y'); ?>
                             at
-                            <?php echo date_format($topicsDate, 'H:i'); ?>
+                            <?php echo date_format($topicsDate, 'H:i');?>
+                            by
+                            <?= $dataListTopics['author_name'];?>
                         </small>
                     </p>
                 </div>
@@ -28,20 +30,23 @@ ob_start(); ?>
             ?>
     </div>
     <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center mt-3">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
+      <ul class="pagination justify-content-center mt-3">
+          <?php
+          $prevPage = intval($page)-1;
+          $thisPage = intval($page);
+          $nextPage = intval($page)+1;
+          if($prevPage!=0)
+          {
+            echo '<li class="page-item"><a class="page-link" href="topic.php?page='.$prevPage.'">'.$prevPage.'</a></li>';
+          }
+          ?>
+          <li class="page-item"><a class="page-link" href="topic.php?page=<?= $thisPage?>"><?= $thisPage?></a></li>
+          <li class="page-item"><a class="page-link" href="topic.php?page=<?= $nextPage?>"><?= $nextPage?></a></li>
+      </ul>
     </nav>
 
 </section>
-<?php $content = ob_get_clean(); 
-require('template.php');
+<?php require_once('view/formTopic.php');?>
+<?php $content = ob_get_clean();
+require('view/templateForum.php');
 ?>

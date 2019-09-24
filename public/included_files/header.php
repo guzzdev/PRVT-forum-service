@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navigationNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log out</a>
+                    <a class="nav-link" href="logout.php">Log out</a>
                 </li>
 
             </ul>

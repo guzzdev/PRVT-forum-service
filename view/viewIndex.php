@@ -72,7 +72,7 @@ ob_start();
      </section>
 
      <section class="choose h-100" id="choose-section">
-         <div class="h-50 w-100 bg-secondary" onclick="showSignin()">
+         <div class="h-50 w-100 bg-info" onclick="showSignin()">
            <h6 class="display-4 text-center text-white choose-buttons">
              Sign in
            </h6>
@@ -136,5 +136,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-require('template.php');
+require('view/template.php');
 ?>
