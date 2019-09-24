@@ -11,7 +11,7 @@ ob_start(); ?>
         <a href="topic.php?topic=<?php echo htmlspecialchars($dataListTopics['public_id']);?>">
             <div class="card mt-3">
                 <div class="card-body">
-                    <h5 class="card-title"><?= htmlspecialchars($dataListTopics['title']). ":". $dataListTopics['id']; ?></h5>
+                    <h5 class="card-title"><?= htmlspecialchars($dataListTopics['title'])?></h5>
                     <p class="card-text"><?php echo htmlspecialchars(substr($dataListTopics['text'], 0, 250));?>...
                     </p>
                     <p class="card-text">
