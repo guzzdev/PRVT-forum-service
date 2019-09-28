@@ -37,6 +37,15 @@ class TopicManager
             'author_public_id' => $userPublicID));
     }
 
+    public function deleteTopic($publicId, $username, $sanction=false){
+        $db = $this->dbConnect();
+
+        $deleteTopciSql = "DELETE FROM `topic` WHERE `topic`.`public_id` = :publicId";
+        $reqDeleteTopic = $db->prepare($deleteTopciSql);
+        $reqDeleteTopic->bindParam(":publicId",$publicId, PDO::PARAM_STR);
+        $reqDeleteTopic->execute();
+    }
+
     public function getTopics($page)
     {
         $nbrPage = 10;

@@ -14,6 +14,12 @@ ob_start(); ?>
               <p><?php echo date_format($topicDate, 'd F Y'); ?> at <?php echo date_format($topicDate, 'H:i'); ?> by
                   <strong><?php echo $topic['author_name']?></strong>
               </p>
+              <?php
+                if($_SESSION['is_admin'] == 1){echo("<br><br><form action=\"controller/deleteTopic.php\" method=\"POST\" class=\"btn btn-danger\">
+                  <input type=\"hidden\" name=\"deleteTopicAuthor\" value=". $topic['author_name'].">
+                  <input type=\"hidden\" name=\"deleteTopicId\" value=". $topic['public_id'].">
+                  <input type=\"submit\" class=\"btn btn-danger\" name=\"deleteTopic\" value=\"Delete topic\"></form>");}
+              ?>
           </div>
       </div>
   </section>
@@ -36,6 +42,14 @@ ob_start(); ?>
                     <cite>
                       <?= $comment['author_name'];?>
                     </cite>
+                    <?php
+                      if($_SESSION['is_admin'] == 1){
+                        echo("<br><br><form action=\"controller/deleteComment.php\" method=\"POST\" class=\"btn btn-danger\">
+                        <input type=\"hidden\" name=\"deleteCommentAuthor\" value=". $comment['author_name'].">
+                        <input type=\"hidden\" name=\"deleteCommentIdParrent\" value=". $comment['id_public_parent'].">
+                        <input type=\"hidden\" name=\"deleteCommentId\" value=". $comment['id_public'].">
+                        <input type=\"submit\" class=\"btn btn-danger\" name=\"deleteTopic\" value=\"Delete message\"></form>");}
+                    ?>
                   </footer>
                 </blockquote>
               </div>

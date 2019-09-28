@@ -38,4 +38,13 @@ class CommentManager
       return $reqComments;
     }
 
+    public function deleteComment($publicId){
+        $db = $this->dbConnect();
+
+        $deleteCommentSql = " DELETE FROM `comments` WHERE `comments`.`id_public` = :publicId";
+        $reqDeleteComment = $db->prepare($deleteCommentSql);
+        $reqDeleteComment->bindParam(":publicId",$publicId, PDO::PARAM_STR);
+        $reqDeleteComment->execute();
+    }
+
 }

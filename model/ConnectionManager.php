@@ -80,6 +80,7 @@ class ConnectionManager
               $_SESSION['connected'] = 1;
               $_SESSION['username'] = $username;
               $_SESSION['public_id'] = $result['public_id'];
+              $_SESSION['is_admin'] = $result['is_admin'];
 
               header('Location: topic.php');
           }
