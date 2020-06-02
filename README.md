@@ -1,3 +1,8 @@
 # PRVT
-An Anonyme service to talk with people, no censure, no tracking.
-Full open source
+
+PRVT is a PHP forum. With basics rules.
+Warning : The project is discontinued. There might be a few major bugs.
+Free to use
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
