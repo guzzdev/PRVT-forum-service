@@ -1,6 +1,6 @@
 # PRVT
 
-PRVT is a PHP forum. With basics rules.
+PRVT is a basic PHP forum.
 Warning : The project is discontinued. There might be a few major issues.
 Free to use
 
